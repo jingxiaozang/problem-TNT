@@ -1,0 +1,16 @@
+library(ape)
+
+file_contents <- readLines("C:/TNT/TNT-bin/projects/project44/ew.tre")
+tree_text <- paste(file_contents, collapse = "\n")
+tree_strings <- strsplit(tree_text, "\\*")[[1]]
+ew_trees <- lapply(tree_strings, function(tree_string) {
+  tree_string <- gsub("[\\s()]+", "", tree_string)
+  phy <- ape::read.tree(text = tree_string, format = "user")
+  return(phy)
+})
+
+for (i in seq_along(ew_trees)) {
+  cat("Tree", i, ":\n")
+  print(ew_trees[[i]])
+  cat("\n")
+}
