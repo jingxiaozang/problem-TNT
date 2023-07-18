@@ -1,0 +1,5 @@
+library(TreeTools)
+
+filepath <- 'C:\\TNT\\TNT-bin\\projects\\project44\\ew.tre'
+tree <- ReadTntTree(filepath)
+print(tree)
