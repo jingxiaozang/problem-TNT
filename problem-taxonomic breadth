@@ -1,0 +1,47 @@
+species <- c(
+  'Stylocellus globosus',
+  'Suzukielus sauteri',
+  'Siro exilis',
+  'Paragovia sironoides',
+  'Ogovea cameroonensis',
+  'Troglosiro sp.',
+  'Stylocellus ramblae',
+  'Huitaca ventralis',
+  'Metagovea philipi',
+  'Karripurcellia peckorum',
+  'Chileogovea oedipus',
+  'Paramiopsalis ramulosus',
+  'Iberosiro distylos',
+  'Parasiro coiffaiti',
+  'Parasiro minor',
+  'Parasiro corsicus',
+  'Odontosiro lusitanicus',
+  'Cyphophthalmus duricorius',
+  'Cyphophthalmus serbicus',
+  'Siro rubens',
+  'Siro valleorum',
+  'Tranteeva paradoxa',
+  'Siro sonoma',
+  'Siro acaroides',
+  'Siro kamiakensis',
+  'Marwe coarctata',
+  'Metasiro americanus'
+)
+
+
+taxonomy <- list()
+taxonomy_names <- gsub(" ", "_", species)
+for (i in 1:length(species)) {
+  taxonomy[[taxonomy_names[i]]] <- c("Biota", "Animalia", "Chordata", "Vertebrata", "Gnathostomata", "Chondrichthyes", "Holocephali", "Chimaeriformes", "Rhinochimaeridae", "Genus", species[i])
+}
+
+
+ranks <- c("Biota", "Kingdom", "Phylum", "Subphylum", "Infraphylum", "Parvphylum", "Class", "Order", "Family", "Genus", "Species")
+
+
+for (rank in rev(ranks)) {
+  if (length(unique(sapply(taxonomy, function(x) x[which(ranks == rank)]))) == 1) {
+    cat("Taxonomic breadth of this matrix is:", rank, "\n")
+    break
+  }
+}
